@@ -31,13 +31,17 @@ function preload() {
 }
 
 function create() {
-  this.add.image(400, 300, 'ocean');
+  //this.gameSpeed = 10;
 
-  platforms = this.physics.add.staticGroup();
+  this.ground = this.add.tileSprite(0, 600, 800, 32, 'ground').setOrigin(0, 1);
 
-  platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+  //this.add.image(400, 300, 'ocean');
 
-  this.add.image();
+  // platforms = this.physics.add.staticGroup();
+
+  // platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+
+  //this.add.image();
 
   player = this.physics.add.sprite(100, 450, 'cat');
 
@@ -70,21 +74,25 @@ function create() {
 }
 
 function update() {
-  if (cursors.left.isDown) {
-    player.setVelocityX(-160);
+  //this.ground.tilePositionX += 10;
 
-    player.anims.play('left', true);
-  } else if (cursors.right.isDown) {
-    player.setVelocityX(160);
+  this.ground.autoScroll(-150, 0);
 
-    player.anims.play('right', true);
-  } else {
-    player.setVelocityX(0);
+  // if (cursors.left.isDown) {
+  //   player.setVelocityX(-160);
 
-    player.anims.play('turn');
-  }
+  //   player.anims.play('left', true);
+  // } else if (cursors.right.isDown) {
+  //   player.setVelocityX(160);
 
-  if (cursors.up.isDown && player.body.touching.down) {
-    player.setVelocityY(-300);
-  }
+  //   player.anims.play('right', true);
+  // } else {
+  //   player.setVelocityX(0);
+
+  //   player.anims.play('turn');
+  // }
+
+  // if (cursors.up.isDown && player.body.touching.down) {
+  //   player.setVelocityY(-300);
+  // }
 }
