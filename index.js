@@ -6,7 +6,7 @@ var config = {
   physics: {
     default: 'arcade',
     arcade: {
-      debug: false,
+      debug: true,
     },
   },
   scene: {
@@ -27,6 +27,8 @@ function preload() {
     frameWidth: 84,
     frameHeight: 94,
   });
+
+  this.load.image('obsticle', 'assets/octupus.png');
 }
 
 function create() {
@@ -34,6 +36,11 @@ function create() {
 
   this.gameSpeed = 5;
   const { height, width } = this.game.config;
+
+  // this.startTrigger = this.physics.add
+  //   .sprite(0, 10)
+  //   .setOrigin(0.1)
+  //   .setImmovable();
 
   this.ground = this.add
     .tileSprite(0, height, width, 28, 'ground')
@@ -55,6 +62,14 @@ function create() {
   this.spacebar = this.input.keyboard.addKey(
     Phaser.Input.Keyboard.KeyCodes.SPACE
   );
+
+  //  The score
+  scoreText = this.add.text(16, 16, 'score: 0', {
+    fontSize: '32px',
+    fill: '#000',
+  });
+
+  //this.initStartTrigger();
 }
 
 function update() {
