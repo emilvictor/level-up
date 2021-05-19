@@ -6,7 +6,7 @@ var config = {
   physics: {
     default: 'arcade',
     arcade: {
-      debug: true,
+      debug: false,
     },
   },
   scene: {
@@ -22,13 +22,13 @@ function preload() {
   this.load.image('background', 'assets/ocean.png');
   this.load.image('ground', 'assets/ground.png');
   this.load.image('cat-idle', 'assets/cat-idle.png');
+  this.load.image('obsticle', 'assets/octopus.png');
+  this.load.image('obsticle2', 'assets/coral.png');
 
   this.load.spritesheet('cat', 'assets/cat-run.png', {
     frameWidth: 84,
     frameHeight: 94,
   });
-
-  this.load.image('obsticle', 'assets/octupus.png');
 }
 
 function create() {
@@ -37,14 +37,12 @@ function create() {
   this.gameSpeed = 5;
   const { height, width } = this.game.config;
 
-  // this.startTrigger = this.physics.add
-  //   .sprite(0, 10)
-  //   .setOrigin(0.1)
-  //   .setImmovable();
-
   this.ground = this.add
     .tileSprite(0, height, width, 28, 'ground')
     .setOrigin(0, 1);
+
+  this.obsticle = this.physics.add.sprite(width, height / 2, 'obsticle');
+  this.obsticle2 = this.physics.add.sprite(width, height - 40, 'obsticle2');
 
   this.cat = this.physics.add
     .sprite(0, height, 'cat-idle')
@@ -69,11 +67,49 @@ function create() {
     fill: '#000',
   });
 
-  //this.initStartTrigger();
+  this.physics.add.collider(this.cat, this.obsticle, gameOver, null, this);
+  this.physics.add.collider(this.cat, this.obsticle2, gameOver, null, this);
+}
+
+function gameOver() {
+  console.log('GAME OVER!');
+  this.scene.pause();
+  this.add.text(400, 200, 'GAME OVER', {
+    fontSize: '52px',
+    fill: '#FF0000',
+  });
+}
+
+//Move obsticle towards cat and update on random y-location
+function moveObsticle(obsticle, speed) {
+  obsticle.x -= speed;
+  if (obsticle.x < 0) {
+    this.resetObsticle(obsticle);
+  }
+}
+
+function resetObsticle(obsticle) {
+  obsticle.x = 1000;
+  var randomY = Phaser.Math.Between(300, 0);
+  obsticle.y = randomY;
+}
+
+function moveObsticle2(obsticle2, speed) {
+  obsticle2.x -= speed;
+  if (obsticle2.x < 0) {
+    this.resetObsticle2(obsticle2);
+  }
+}
+
+function resetObsticle2(obsticle2) {
+  obsticle2.x = 1000;
 }
 
 function update() {
   this.ground.tilePositionX += this.gameSpeed;
+
+  moveObsticle(this.obsticle, 6);
+  moveObsticle2(this.obsticle2, 4);
 
   if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
     this.cat.setVelocityY(-300);
