@@ -21,20 +21,22 @@ var game = new Phaser.Game(config);
 function preload() {
   this.load.image('background', 'assets/ocean.png');
   this.load.image('ground', 'assets/ground.png');
-  this.load.image('cat-idle', 'assets/cat-idle.png');
+  this.load.image('cat-idle', 'assets/cat-idle2.png');
   this.load.image('obsticle', 'assets/octopus.png');
   this.load.image('obsticle2', 'assets/coral.png');
   this.load.image('obsticle3', 'assets/shark.png');
+  this.load.image('replayButton', 'assets/replay.png');
 
-  this.load.spritesheet('cat', 'assets/cat-run.png', {
-    frameWidth: 84,
-    frameHeight: 94,
+  this.load.spritesheet('cat', 'assets/cat-run2.png', {
+    frameWidth: 74,
+    frameHeight: 83,
   });
 }
 
 var text;
 var score = 0;
 var timedEvent;
+var resetEvent;
 
 function create() {
   this.add.image(0, 0, 'background').setOrigin(0, 0);
@@ -49,7 +51,7 @@ function create() {
   this.obsticle = this.physics.add.sprite(width + 300, height / 2, 'obsticle');
   this.obsticle2 = this.physics.add.sprite(width, height - 40, 'obsticle2');
   this.obsticle3 = this.physics.add.sprite(
-    width + 5000,
+    width + 7000,
     height / 2,
     'obsticle3'
   );
@@ -71,6 +73,13 @@ function create() {
     Phaser.Input.Keyboard.KeyCodes.SPACE
   );
 
+  ///////////// click test ///////////
+  this.input.on(Phaser.Input.Events.POINTER_DOWN, function (pointer) {
+    console.log('click');
+  });
+  ////////===///////====///////
+
+  // score
   text = this.add.text(16, 16, '0', { fontSize: '22px', fill: '#000' });
 
   timedEvent = this.time.addEvent({
@@ -82,20 +91,38 @@ function create() {
     loop: true,
   });
 
+  // obsticles colliders
   this.physics.add.collider(this.cat, this.obsticle, gameOver, null, this);
   this.physics.add.collider(this.cat, this.obsticle2, gameOver, null, this);
   this.physics.add.collider(this.cat, this.obsticle3, gameOver, null, this);
 }
 
+//gameover
 function gameOver() {
   console.log('GAME OVER!');
   this.scene.pause();
-  this.add.text(350, 150, 'GAME OVER', {
+  this.add.text(340, 150, 'GAME OVER', {
     fontSize: '62px',
     fill: '#FF0000',
   });
+
+  // this.restart = this.add
+  //   .image(500, 250, 'replayButton')
+  //   .setInteractive()
+  //   .on(Phaser.Input.Events.POINTER_DOWN, function (pointer) {
+  //     window.location.reload('Refresh');
+  //   });
+
+  // reloade sidan med click?
+  // this.input.on(Phaser.Input.Events.POINTER_DOWN, function (pointer) {
+  //   window.location.reload('Refresh');
+  // });
+
+  //reloada sidan:
+  // window.location.reload('Refresh');
 }
 
+// ============== OBSTICLES ============== //
 //Move obsticle towards cat and update on random y-location
 function moveObsticle(obsticle, speed) {
   obsticle.x -= speed;
@@ -117,7 +144,7 @@ function moveObsticle3(obsticle3, speed) {
   obsticle3.x -= speed;
   if (obsticle3.x < 0) {
     obsticle3.x = 1000;
-    var randomY = Phaser.Math.Between(350, 0);
+    var randomY = Phaser.Math.Between(300, 0);
     obsticle3.y = randomY;
   }
 }
@@ -127,7 +154,7 @@ function update() {
 
   moveObsticle(this.obsticle, 6);
   moveObsticle2(this.obsticle2, 5);
-  moveObsticle3(this.obsticle3, 8);
+  moveObsticle3(this.obsticle3, 7);
 
   if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
     this.cat.setVelocityY(-300);
