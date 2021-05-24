@@ -1,8 +1,15 @@
 {
   "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
   "dependencies": {
     "phaser": "^3.54.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "vite": "^2.3.3"
   },
   "prettier": {
     "singleQuote": true

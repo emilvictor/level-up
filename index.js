@@ -19,15 +19,15 @@ var config = {
 var game = new Phaser.Game(config);
 
 function preload() {
-  this.load.image('background', 'assets/ocean.png');
-  this.load.image('ground', 'assets/ground.png');
-  this.load.image('cat-idle', 'assets/cat-idle2.png');
-  this.load.image('obsticle', 'assets/octopus.png');
-  this.load.image('obsticle2', 'assets/coral.png');
-  this.load.image('obsticle3', 'assets/shark.png');
-  this.load.image('replayButton', 'assets/replay.png');
+  this.load.image('background', '/ocean.png');
+  this.load.image('ground', '/ground.png');
+  this.load.image('cat-idle', '/cat-idle2.png');
+  this.load.image('obsticle', '/octopus.png');
+  this.load.image('obsticle2', '/coral.png');
+  this.load.image('obsticle3', '/shark.png');
+  this.load.image('replayButton', '/replay.png');
 
-  this.load.spritesheet('cat', 'assets/cat-run2.png', {
+  this.load.spritesheet('cat', '/cat-run2.png', {
     frameWidth: 74,
     frameHeight: 83,
   });
