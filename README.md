@@ -28,6 +28,7 @@ Have fun playing.
 # Code Review by Simon Lindstedt and Hugo Sundberg
 
 - New game reloads entire site
+- Favicon is missing
 - `index.js:99` Left over console.log.
 - `index.js:52-58` Obsticles can be made into a seperate class.
 - `index.js:112-136` The moveObsticles functions could be reduced to a single function (or method on the obsticles-class). This function or method could be written in a way that allows various parameters for manipulating the obsticle-instances.
