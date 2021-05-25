@@ -44,8 +44,8 @@ Have fun playing.
 
 Tested by the following people:
 
-1. Jane Doe
-2. John Doe
+1. Hugo Sundberg
+2. Simon Lindstedt
 3. Jane Doe
 
 Tested by the following muggles (non-coders):
