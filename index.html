@@ -7,15 +7,21 @@
     <title>Ocean Run</title>
     <style type="text/css">
       body {
-        padding-top: 50px;
+        padding-top: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+      }
+      button {
+        margin-bottom: 20px;
       }
     </style>
   </head>
   <body>
     <!-- <script src="/node_modules/phaser/dist/phaser.min.js"></script> -->
     <script type="module" src="/index.js"></script>
+    <p>press spacebar to swim up</p>
+    <button onClick="location.reload();">New game</button>
   </body>
 </html>
