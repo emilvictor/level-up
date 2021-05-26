@@ -1,6 +1,6 @@
 <img src="https://media.giphy.com/media/qhLwaybQQWVe8/giphy.gif" width="100%">
 
-# Project Title
+# Ocean Run
 
 This is a game inspired by the Offline Dinosaur Chrome with our own touch to it. In this game our unicorn cat has sunk down to the bottom of the ocean, help him swim his way out while tryng to avoid the obsticles in the water. Press <i>spacebar</i> to swim up to avoid the obsticles.<br> <br>
 This was created using <b>Phaser 3 game engine</b>. See the project hosted live on <a href="https://ocean-run.netlify.app/" target="_blank">THIS LINK</a>
@@ -50,13 +50,12 @@ Tested by the following people:
 
 Tested by the following muggles (non-coders):
 
-1. Daniel (brother)
-2. Parsa (a friend)
-3. Therese (a friend)
-4. John Doe
+1. Daniel P
+2. Parsa Z
+3. Therese A
+4. Brandon E
 
 # Created by
 
 [Gilda A](https://github.com/gillybeans)
-
 [Emil P](https://github.com/emilvictor)

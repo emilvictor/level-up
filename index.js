@@ -33,9 +33,9 @@ function preload() {
   });
 }
 
-var text;
-var score = 0;
-var timedEvent;
+let text;
+let score = 0;
+let timedEvent;
 
 function create() {
   this.add.image(0, 0, 'background').setOrigin(0, 0);
@@ -96,7 +96,6 @@ function create() {
 
 //gameover
 function gameOver() {
-  console.log('GAME OVER!');
   this.scene.pause();
   this.add.text(310, 170, 'GAME OVER', {
     fontSize: 'bold 66px',
